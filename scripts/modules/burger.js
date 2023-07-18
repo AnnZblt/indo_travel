@@ -4,7 +4,6 @@ const burger = () => {
   const burgerMenu = document.querySelector('.header__menu');
 
   headerContainer.addEventListener('click', (event) => {
-    console.log(event.target);
     if (event.target === burgerButton) {
       burgerMenu.classList.toggle('header__menu_active');
     } else {
