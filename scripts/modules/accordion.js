@@ -1,6 +1,5 @@
 const accordion = () => {
   const travelItems = document.querySelectorAll('.travel__item');
-  const travelTitles = document.querySelectorAll('.travel__item-title');
   const travelTextWrappers =
     document.querySelectorAll('.travel__item-text-wrapper');
 
@@ -12,8 +11,8 @@ const accordion = () => {
     }
   });
 
-  travelTitles.forEach((travelTitle, index) => {
-    travelTitle.addEventListener('click', () => {
+  travelItems.forEach((travelItem, index) => {
+    travelItem.addEventListener('click', () => {
       for (let i = 0; i < travelItems.length; i++) {
         if (index === i) {
           travelTextWrappers[i].style.height =
