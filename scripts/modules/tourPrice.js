@@ -80,6 +80,7 @@ const loadData = async (selectArea) => {
   tourDateInfo.addEventListener('change', event => {
     resetPeopleSelect(tourPeopleInfo);
     fillPeopleSelect(event.target.value, tourPeopleInfo);
+    resetPeopleSelect(reservationSelectPeople);
     fillPeopleSelect(event.target.value, reservationSelectPeople);
     reservationSelectDate.value = event.target.value;
     updateReservationResults();
