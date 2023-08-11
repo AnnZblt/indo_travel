@@ -40,4 +40,4 @@ const burger = () => {
   });
 };
 
-export default burger;
+burger();

@@ -1,9 +1,9 @@
 const tourDateInfo = document.querySelector('#tour__date');
 const tourPeopleInfo = document.querySelector('#tour__people');
-
 const reservationSelectDate = document.querySelector('#reservation__date');
 const reservationSelectPeople = document.querySelector('#reservation__people');
 const reservationInfo = document.querySelector('.reservation__info');
+const reservationConditions = document.querySelector('.reservation__conditions');
 const reservationData = reservationInfo.querySelector('.reservation__data');
 const reservationPrice = reservationInfo.querySelector('.reservation__price');
 const findTourPrice = document.querySelector('.tour__button');
@@ -15,11 +15,17 @@ const wordDeclension = (num, arr) => {
     2 : cases[(num % 10 < 5) ? num % 10 : 5]];
 };
 
-const loadData = async (selectArea) => {
+const loadData = async () => {
   const result = await fetch('./../date.json');
   const data = await result.json();
 
-  const fillDateSelect = async (selectArea) => {
+  return data;
+};
+
+const fillSelectors = async () => {
+  const data = await loadData();
+
+  const fillDateSelect = (selectArea) => {
     data.map(item => {
       const dateOption = document.createElement('option');
       dateOption.value = item.date;
@@ -31,7 +37,6 @@ const loadData = async (selectArea) => {
 
   fillDateSelect(tourDateInfo);
   fillDateSelect(reservationSelectDate);
-
 
   const fillPeopleSelect = (selectedDate, selectArea) => {
     const selectedItem = data.find(item => item.date === selectedDate);
@@ -61,7 +66,18 @@ const loadData = async (selectArea) => {
     selectArea.append(peopleOption);
   };
 
-  const updateReservationResults = () => {
+  const hideConditions = (reConditions) => {
+    reConditions.classList.add('hidden');
+  };
+
+  const showConditions = (reConditions, reData, rePrice) => {
+    reConditions.classList.remove('hidden');
+    reData.textContent = '';
+    rePrice.textContent = '0₽';
+  };
+
+  const updateReservationResults = async () => {
+    const data = await loadData();
     const selectedDate = reservationSelectDate.value;
     const selectedPeopleCount = reservationSelectPeople.value;
     const selectedItem = data.find(item => item.date === selectedDate);
@@ -74,6 +90,9 @@ const loadData = async (selectArea) => {
         `${selectedDate}, ${selectedPeopleCount} ${wordDeclension(selectedPeopleCount, peopleDeclension)}`;
 
       reservationPrice.textContent = `${totalPrice}₽`;
+      hideConditions(reservationConditions);
+    } else {
+      showConditions(reservationConditions, reservationData, reservationPrice);
     }
   };
 
@@ -107,4 +126,4 @@ const loadData = async (selectArea) => {
   });
 };
 
-loadData();
+fillSelectors();

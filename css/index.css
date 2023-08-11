@@ -494,6 +494,13 @@ p {
 	margin: 0;
 }
 
+.hidden {
+	display: none !important;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
 .container {
 	max-width: 1300px;
 	padding: 0 60px;
@@ -1711,6 +1718,13 @@ p {
 	min-width: 360px;
 }
 
+.reservation__conditions {
+	font-size: 15px;
+	line-height: 15px;
+	color: #8d8484;
+	transition: all 0.2s;
+}
+
 .reservation__bottom {
 	width: 100%;
 }
@@ -1731,6 +1745,30 @@ p {
 .reservation__button {
 	padding: 24px 112px;
 	border-radius: 12px;
+}
+
+.reservation__succes {
+	margin-bottom: 45px;
+}
+
+.reservation__succes-image {
+	width: 100px;
+	height: 100px;
+	background-image: url("/img/reservation/ok.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin-bottom: 25px;
+}
+
+.reservation__error {
+	order: 1;
+	margin-bottom: 45px;
+}
+
+.reservation__bottom-error {
+	justify-content: center;
+	order: 2;
 }
 
 .footer {
@@ -1884,6 +1922,10 @@ p {
 	height: 62px;
 	border-radius: 8px;
 	background: url("../img/footer/arrow.svg") center/contain no-repeat;
+}
+
+.footer__form {
+	width: 400px;
 }
 
 .footer__info {
@@ -2152,6 +2194,8 @@ p {
 
 	.reservation__title {
 		font-size: 30px;
+		padding: 0 85px;
+		text-align: center;
 	}
 
 	.reservation__info {

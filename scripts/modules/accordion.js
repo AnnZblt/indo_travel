@@ -28,4 +28,4 @@ const accordion = () => {
   });
 };
 
-export default accordion;
+accordion();
