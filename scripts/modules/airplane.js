@@ -29,5 +29,3 @@ const calcPositionAirplane = () => {
 window.addEventListener('scroll', () => {
   requestAnimationFrame(calcPositionAirplane);
 });
-
-calcPositionAirplane();

@@ -1566,6 +1566,7 @@ p {
 	align-items: center;
 	gap: 30px;
 	max-width: 980px;
+	position: relative;
 }
 
 .reservation__title {
@@ -1747,8 +1748,42 @@ p {
 	border-radius: 12px;
 }
 
-.reservation__succes {
-	margin-bottom: 45px;
+.reservation__succes,
+.reservation__error {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	align-items: center;
+	border: 1px solid #AFAFAF;
+	border-radius: 30px;
+	padding: 77px 100px;
+	max-width: 980px;
+}
+
+.reservation__succes-title,
+.reservation__error-title {
+	margin-bottom: 40px;
+	text-align: center;
+	font-family: Merriweather;
+	font-weight: 400;
+	font-size: 34px;
+	line-height: 150%;
+	color: #303030;
+	padding: 0px 90px;
+}
+
+.reservation__error-title {
+	padding: 0;
+}
+
+.reservation__succes-text,
+.reservation__error-text {
+	color: #303030;
+	margin-bottom: 64px;
+	font-family: Nunito;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 150%;
 }
 
 .reservation__succes-image {
@@ -1758,18 +1793,39 @@ p {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: contain;
-	margin-bottom: 25px;
+	margin-bottom: 8px;
 }
 
-.reservation__error {
-	order: 1;
-	margin-bottom: 45px;
+.reservation__error-button {
+	color: #FFFFFF;
+	font-family: Nunito;
+	line-height: 150%;
+	font-size: 18px;
+	font-weight: 700;
+	background-color: #FCB500;
+	border-radius: 12px;
+	padding: 24px 112px;
+	margin-bottom: 12px;
 }
 
-.reservation__bottom-error {
-	justify-content: center;
-	order: 2;
+.error__message_container {
+	position: absolute;
+	z-index: 10;
+	display: block;
+	top: 125px;
+	left: calc(50% - 130px);
+	border: 0.5px solid #fcb501;
+	border-radius: 8px;
+	padding: 10px 20px;
+	transition: all ease 0.3s;
 }
+
+.error__message_text {
+	font-size: 15px;
+	line-height: 15px;
+	color: #8d8484;
+}
+
 
 .footer {
 	padding: 80px 0;
@@ -1924,9 +1980,33 @@ p {
 	background: url("../img/footer/arrow.svg") center/contain no-repeat;
 }
 
-.footer__form {
+.footer__form,
+.feedback__succes,
+.feedback__error {
 	width: 400px;
 }
+
+.feedback__succes-title,
+.feedback__error-title {
+	padding-right: 70px;
+}
+
+.feedback__succes-text,
+.feedback__error-text {
+	line-height: 150%;
+	padding-right: 110px;
+}
+
+.feedback__error-text {
+	margin-bottom: 34px;
+}
+
+.feedback__error-button {
+	padding: 10px 22px 10px 20px;
+	border-radius: 8px;
+}
+
+
 
 .footer__info {
 	display: -ms-grid;

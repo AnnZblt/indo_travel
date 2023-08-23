@@ -8,6 +8,9 @@ const reservationData = reservationInfo.querySelector('.reservation__data');
 const reservationPrice = reservationInfo.querySelector('.reservation__price');
 const findTourPrice = document.querySelector('.tour__button');
 const peopleDeclension = ['человек', 'человека', 'человек'];
+const sharedData = {
+  resprice: 0,
+};
 
 const wordDeclension = (num, arr) => {
   const cases = [2, 0, 1, 1, 1, 2];
@@ -91,6 +94,8 @@ const fillSelectors = async () => {
 
       reservationPrice.textContent = `${totalPrice}₽`;
       hideConditions(reservationConditions);
+
+      sharedData.resprice = totalPrice;
     } else {
       showConditions(reservationConditions, reservationData, reservationPrice);
     }
@@ -127,3 +132,9 @@ const fillSelectors = async () => {
 };
 
 fillSelectors();
+
+export {
+  peopleDeclension,
+  sharedData,
+  wordDeclension,
+};

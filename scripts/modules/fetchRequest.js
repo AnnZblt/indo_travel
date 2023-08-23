@@ -17,13 +17,15 @@ export const fetchRequest = async (url, {
 
     if (response.ok) {
       const data = await response.json();
-      if (callback) callback(null, data);
+      console.log('Fetch request data', data);
+      if (callback) return callback(null, data);
       return;
     }
 
     throw new Error(`Ошибка ${response.status}: ${response.statusText}`);
   } catch (err) {
-    callback(err);
+    if (callback) callback(err);
+    throw err;
   }
 };
 
