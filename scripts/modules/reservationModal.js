@@ -11,8 +11,6 @@ const showModal = async (err, data) => {
   const tourPrice = sharedData.resprice;
   const resData = sentData;
 
-  console.log();
-
   const overlay = document.createElement('div');
   const modalWindow = document.createElement('div');
   const title = document.createElement('h2');
@@ -51,13 +49,11 @@ const showModal = async (err, data) => {
 
   return new Promise(resolve => {
     edit.addEventListener('click', () => {
-      console.log('Edit click');
       overlay.remove();
       resolve(false);
     });
 
     confirm.addEventListener('click', () => {
-      console.log('Confirm click');
       overlay.remove();
       resolve(true);
     });

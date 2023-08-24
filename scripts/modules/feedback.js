@@ -173,6 +173,25 @@ const errorFooterForm = () => {
   });
 };
 
+const errorAnimation = () => {
+  let startTime = performance.now();
+  const duration = 300;
+  const errorReservationShake = (timestamp) => {
+    const elapsed = timestamp - startTime;
+
+    if (elapsed < duration) {
+      const progress = elapsed / duration;
+      const angle = Math.sin(progress * Math.PI * 4) * 5;
+      reservationForm.style.transform = `translateX(${angle}px)`;
+      requestAnimationFrame(errorReservationShake);
+    } else {
+      reservationForm.style.transform = '';
+    }
+  };
+  errorMessage();
+  requestAnimationFrame(errorReservationShake);
+};
+
 reservationForm.addEventListener('click', async (event) => {
   event.preventDefault();
 
@@ -183,22 +202,7 @@ reservationForm.addEventListener('click', async (event) => {
     const contactNumber = reservationForm.resphone.value;
 
     if (!dates || !peopleCount || !contactName || !contactNumber) {
-      let startTime = performance.now();
-      const duration = 300;
-      const errorReservationShake = (timestamp) => {
-        const elapsed = timestamp - startTime;
-
-        if (elapsed < duration) {
-          const progress = elapsed / duration;
-          const angle = Math.sin(progress * Math.PI * 4) * 5;
-          reservationForm.style.transform = `translateX(${angle}px)`;
-          requestAnimationFrame(errorReservationShake);
-        } else {
-          reservationForm.style.transform = '';
-        }
-      };
-      errorMessage();
-      requestAnimationFrame(errorReservationShake);
+      errorAnimation();
       return;
     }
 
@@ -210,8 +214,6 @@ reservationForm.addEventListener('click', async (event) => {
     const checkReservation = await fetchRequest(dbUrl, {
       callback: showModal,
     });
-
-    console.log('Чек резервейшон', checkReservation);
 
     if (checkReservation) {
       fetchRequest(setDataURL, {
